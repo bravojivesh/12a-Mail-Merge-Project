@@ -12,9 +12,11 @@ with open("./Input/Letters/starting_letter.txt") as letter:
     content= letter.read()
 
 with open ("./Input/Names/invited_names.txt") as names:
-    single_name= names.readline()
-    new_content=content.replace("[name]", single_name)
-    # with open (f"./Output/ReadyToSend/{single_name}.txt", mode="w") as output:
-    #     output.write(new_content)
+    name_one_at_a_time= names.readlines()
+    for entry in name_one_at_a_time:
+        single_name=entry.strip()
+        new_content=content.replace("[name]", single_name)
+        with open (f"./Output/ReadyToSend/{single_name}.txt", mode="w") as output:
+            output.write(new_content)
 
-print (new_content)
+        # print (new_content)
